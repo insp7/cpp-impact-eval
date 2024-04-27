@@ -1,0 +1,138 @@
+HPOG 1.0 DS14
+s01_future_school
+s02_future_work
+s02a_work_hours
+
+socialsupport_lo (Social Support Index, Avg of 10 variables with values 1, 2, 3, 4)
+S12A_DEPEND	
+S12B_CLOSE	
+S12C_TURN_TO	
+S12D_ACTIVITIES	
+S12E_RESPECT	
+S12F_ASSISTANCE	
+S12G_EMOTIONAL_SECURITY	
+S12H_COMPENTENCE	
+S12I_INTERESTS	
+S12J_TRUSTWORTHY
+
+# minor suggestion: renaming this variable as 'social_support_index' instead of 'socialsupport_lo'
+careerknowledge (Career Orientation and Knowledge)
+S13A_ABILITIES	
+S13B_PLAN	
+S13C_HELP	
+S13D_JOB	
+S13E_ORGANIZATION	
+S13F_OCCUPATION	S13G_EDUCATION
+S13G_EDUCATION
+
+
+--------------
+
+
+These variables from HPOG DS12(BIF) are not present in HPOG_DS5 or don't even have an equivalent.
+B23_GRADES,
+B08_MARSTAT
+B12A_OTHER_LANG
+B24_CURR_WORK
+B12B_SPEAK_ENGLISH, B12C_READ_ENGLISH => LIMITED_ENGLISH ?
+B26C_PA => RECEIVED_ANYASSISTANCE_HH, RECEIVED_ANYASSISTANCE_IND ?
+
+
+# ----------------------------- TODO -----------------------------
+
+Find required variables from PACE SAQ Add them to the PACE Data Frame Then
+Construct the PACE Input data file (# Important as involves a lot of data
+manipulation)
+
+PACE DATA Frame: 
+Rows: 9,242
+Columns: 35
+
+
+
+
+PACE SAQ Variables:
+
+S01_FUTURE_SCHOOL: Thinking about the near future, do you expect to be going to school part-time or full-time if you are selected for this program?
+S02_FUTURE_WORK: Do you expect to be working for pay in the next few months?
+S02A_WORK_HOURS: How many hours to you expect to be working in a typical week?
+S05_FINANCIAL_SUPPORT: How difficult do you expect it will be to obtain enough financial support for school?
+Career Knowledge => 
+	(Proportion of 7 Variables consisting values: 1 = Strongly disagree, 2 = Disagree, 3 = Agree, 4 = Strongly agree)
+	S13A_ABILITIES: You know how to accurately assess your abilities and challenges.
+	S13B_PLAN: You know how to make a plan that will help achieve your goals for the next 5 years.
+	S13C_HELP: You know how to get help from staff and teachers with any issues that might arise at school.
+	S13D_JOB: You know the type of job that is best for you.
+	S13E_ORGANIZATION: You know the type of organization you want to work for.
+	S13F_OCCUPATION: You know the occupation you want to enter.
+	S13G_EDUCATION: You know the kind of education and training program that is best for you.
+Training Commitment Index => 
+	(Average of 10 variables with values: 1 = Strongly disagree, 2 = Moderately disagree, 3 = Slightly disagree, 4 = Slightly agree, 5 = Moderately agree, 6 = Strongly agree) 
+	S11CC_B_OTHER_THAN_SCHOOL: I would rather do something other than attend school.
+	S11CC_F_STOP_ATTENDING: I would stop attending school if I found something more interesting to do.
+	S11CC_I_HOW_LONG: I am not sure how long I want to continue my education.
+	S11CC_P_DO_WELL: It is very important for me to do well in classes.
+	S11CC_T_MOTIVIATED: I am motivated to continue my education.
+	S11CC_DD_SUCCEED: I am confident that I will succeed in getting more education.
+	S11CC_EE_BEST_CHOICE: I know that continuing my education is the best choice for me.
+	S11CC_GG_COMMITTED: I am committed to finishing whatever educational program I am in.
+	S11CC_JJ_ACHIEVE_GOALS: Continuing my education will help me achieve my goals.
+	S11CC_LL_RIGHT_FOR_ME: I'm not sure if continuing my education is right for me.
+Academic Discipline Index => 
+	(Average of 10 variables with values: 1 = Strongly disagree, 2 = Moderately disagree, 3 = Slightly disagree, 4 = Slightly agree, 5 = Moderately agree, 6 = Strongly agree)
+	S11AD_D_DISCIPLINED: I'm a disciplined student.
+	S11AD_J_SKIP_CLASSES: If I don't feel like going, I skip classes.
+	S11AD_M_ABILITIES: I typically do not perform to the best of my academic abilities.
+	S11AD_N_NOTES: I take good notes in class.
+	S11AD_R_DEADLINES: I miss deadlines.
+	S11AD_U_PERFORMANCE: I'm satisfied with the way I perform academically.
+	S11AD_II_DO_BEST: I do my best in my classes.
+	S11AD_KK_CONSISTENTLY: I consistently do my academic work well.
+	S11AD_NN_HARD_WORKING: Others consider me a hard-working student.
+	S11AD_PP_ASSIGNMENTS: I turn in my assignments on time.
+Emotional Stability Index (Called 'Steadiness' in the Questionnaire) => 
+	(Average of 12 variables with values: 1 = Strongly disagree, 2 = Moderately disagree, 3 = Slightly disagree, 4 = Slightly agree, 5 = Moderately agree, 6 = Strongly agree)
+	S11ES_A_CALM: I stay calm in difficult situations.
+	S11ES_E_LOSE_CONTROL: I lose control when things go wrong.
+	S11ES_G_IRRITATED: I get easily irritated.
+	S11ES_L_UPSET: I get upset when criticized.
+	S11ES_Q_EXPRESS_ANGER: I express anger toward people who upset me.
+	S11ES_S_THINK_CLEARLY: I cannot think clearly when I'm angry.
+	S11ES_V_TEMPER: I have a bad temper.
+	S11ES_W_ANNOYED: I'm easily annoyed.
+	S11ES_Y_PATIENT: I'm a patient person.
+	S11ES_AA_ARGUMENTS: I often get into arguments.
+	S11ES_FF_FRUSTRATION: I manage my frustration well.
+	S11ES_HH_OUT_OF_CONTROL: I often feel out of control.
+Social Support Index => 
+	(Average of 10 variables with values: 1 = Strongly disagree, 2 = Disagree, 3 = Agree, 4 = Strongly agree)
+	S12A_DEPEND: There are people I can depend on to help me if I really need it.
+	S12B_CLOSE: I feel that I do not have close personal relationships with other people.
+	S12C_TURN_TO: There is no one I can turn to for guidance in times of stress.
+	S12D_ACTIVITIES: There are people who enjoy the same social activities that I do.
+	S12E_RESPECT: I do not think other people respect my skills and abilities.
+	S12F_ASSISTANCE: If something went wrong, no one would come to my assistance.
+	S12G_EMOTIONAL_SECURITY: I have close relationships that provide me with a sense of emotional security and well-being.
+	S12H_COMPENTENCE: I have relationships where my competence and skills are recognized.
+	S12I_INTERESTS: There is no one who shares my interests and concerns.
+	S12J_TRUSTWORTHY: There is a trustworthy person I could turn to for advice if I were having problems.
+Life Challenges Index =>
+	(Average of 6 variables with values: 1 = Never, 2 = Almost never, 3 = Sometimes, 4 = Fairly often, 5 = Very often)
+	S15A_CHILD_CARE: Child care arrangements?
+	S15B_TRANSPORTATION: Transportation?
+	S15C_ALCOHOL: Alcohol or drug use?
+	S15D_ILLNESS: An illness or health condition?
+	S15E_ARGUMENTS: Arguments with a family member?
+	S15F_VIOLENCE: Physical threats/violence from a family member?
+Stress Index =>
+	(Average of 4 variables with values: 1 = Never, 2 = Almost never, 3 = Sometimes, 4 = Fairly often, 5 = Very often)
+	S14A_CONTROL: That you were unable to control the important things in your life.
+	S14B_CONFIDENCE: Confident about your ability to handle your personal problems.
+	S14C_GOING_YOUR_WAY: That things were going your way.
+	S14D_DIFFICULTIES: That difficulties were piling up so high that you could not overcome them.
+
+Note: 
+The footnote mentions, "The codebook claims that the life challenges index is the average of seven items while Judkins et al. (2022) claims that 
+this index is the average of six items". I found the latter to be true, i.e. Life Challenges Index is indeed the average of SIX items.
+
+1 Question: The footnote from analysis plan claims that social support index is available in the 6-year analysis file (DS15). Found it in the PACE SAQ (DS7) itself, is there a need to check for it in DS15?
