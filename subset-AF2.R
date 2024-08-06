@@ -14,7 +14,7 @@ all_hpog_df <- all_hpog %>%
          hours_worked_per_week_15, hours_worked_per_week_36, hours_worked_per_week_alt_36, hours_worked_per_week_72,
          hourly_wage_rate_15, hourly_wage_rate_36, hourly_wage_rate_alt_36, hourly_wage_rate_72,
          weekly_earnings_15, weekly_earnings_36, weekly_earnings_alt_36, weekly_earnings_72, 
-         treatment_group_0, age_in_years_0, age_LT21_0_vc, age_21To24_0_vc, age_GE35_0_vc, 
+         treatment_group_0, age_LT21_0_vc, age_21To24_0_vc, age_GE35_0_vc, 
          ethnicity_hispanic_0, race_black_0, race_asian_0, race_american_indian_0, race_pacific_islander_0,
          educ_no_hs_credential_0_vc, educ_ged_or_alternative_credential_0_vc, educ_regular_high_school_diploma_0_vc, 
          educ_bachelors_degree_or_higher_0_vc, occupational_license_certification_0,

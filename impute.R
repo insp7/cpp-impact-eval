@@ -15,7 +15,7 @@ year_up_df <- read.csv("AF2--YEAR-UP-DataFrame.csv")
 # Discarding variables that I think are unnecessary for the imputation. (Will be confirmed after discussing with JAK)
 all_hpog_imp_set <- all_hpog_df %>% 
   select(-surveyrespondent_15_hpog, -surveyrespondent_36_hpog, -surveyrespondent_72_hpog,
-         -age_LT21_0_vc, -age_21To24_0_vc, -age_GE35_0_vc, -number_of_services, -behavioral_incentives, -avg_fte_caseload, -childcare_transport, -social_services, -financial_services, 
+         -number_of_services, -behavioral_incentives, -avg_fte_caseload, -childcare_transport, -social_services, -financial_services, 
          -number_of_employment_supports, -number_of_colocated_services, -emergency_assistance, -peer_support, -number_of_cp_principles, 
          -proportion_local_some_college, -proportion_local_jobs_health_care, -median_wage_local_health_care, -proportion_local_cash_assistance,
          -proportion_local_enrolled_school, -total_msa_population, -percent_local_unemployed)
