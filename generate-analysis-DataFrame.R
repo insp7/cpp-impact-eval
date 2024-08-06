@@ -159,6 +159,8 @@ data$marstat_never_married_0 <- coalesce(data$marstat_never_married_0.x, data$ma
 # print(sum(data$currently_working_0.x != data$currently_working_0.y, na.rm = T)) # 41
 data$currently_working_0 <- coalesce(data$currently_working_0.x, data$currently_working_0.y)
 
+table(data$currently_working_0.y)
+
 # worked_before_0.x                  
 # print(sum(data$worked_before_0.x != data$worked_before_0.y, na.rm = T)) # 514
 data$worked_before_0 <- coalesce(data$worked_before_0.x, data$worked_before_0.y)
@@ -291,10 +293,12 @@ pace_only_df <- pace_only %>%
          financial_support_not_difficult_at_all, financial_support_somewhat_difficult, financial_support_very_difficult, career_knowledge_3_variables,
          career_knowledge_7_variables, training_commitment_index, academic_discipline_index, emotional_stability_index, social_support_index,
          life_challenges_index_4_variables, life_challenges_index_6_variables, stress_index, weight_15, weight_36, weight_72)
+table(pace_only_df$speak_only_english_at_home_0)
+
+table(addNA(df$speak_only_english_at_home_0), addNA(df$reading_english_proficiency_not_at_all_0))
 
 year_up_df <- year_up %>% 
-  select(participant_id, site_id, 
-         surveyrespondent_15_pace, surveyrespondent_36_pace, surveyrespondent_72_pace, study_pace, study_year_up, 
+  select(participant_id, site_id, surveyrespondent_15_pace, surveyrespondent_36_pace, surveyrespondent_72_pace, study_pace, study_year_up, 
          currently_working_15, currently_working_36, currently_working_72,
          hours_worked_per_week_15, hours_worked_per_week_36, hours_worked_per_week_alt_36, hours_worked_per_week_72,
          hourly_wage_rate_15, hourly_wage_rate_36, hourly_wage_rate_alt_36, hourly_wage_rate_72,
@@ -315,7 +319,6 @@ year_up_df <- year_up %>%
          financial_support_not_difficult_at_all, financial_support_somewhat_difficult, financial_support_very_difficult, career_knowledge_3_variables,
          career_knowledge_7_variables, training_commitment_index, academic_discipline_index, emotional_stability_index, social_support_index,
          life_challenges_index_4_variables, life_challenges_index_6_variables, stress_index, weight_15, weight_36, weight_72)
-
 
 hpog_survey_response_15 <- all_hpog_df %>% 
   filter(surveyrespondent_15_hpog == 1)
@@ -347,10 +350,10 @@ pace_survey_response_72 <- pace_only_df %>%
 # Fetch summary for Code Book
 # sapply(df, calculate_stats)
 
-sapply(hpog_survey_response_36, calculate_stats)
+sapply(year_up_36, calculate_stats)
 
 # ----------------- Write extracted info. to CSV ----------------- 
-write.csv(df, file.path(root,"Analysis-DataFrame.csv"), row.names = FALSE)
+write.csv(df, file.path(root,"AF1.csv"), row.names = FALSE)
 write.csv(all_hpog_df, file.path(root,"ALL-HPOG-1.0-DataFrame.csv"), row.names = FALSE)
 write.csv(pace_only_df, file.path(root,"PACE-ONLY-DataFrame.csv"), row.names = FALSE)
 write.csv(year_up_df, file.path(root,"YEAR-UP-DataFrame.csv"), row.names = FALSE)

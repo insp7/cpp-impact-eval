@@ -25,7 +25,7 @@ data$site_id <- ifelse(data$SITE_NUM.x != 9, data$SITE_NUM.x,
 data <- data %>% rename(surveyrespondent_15_pace = SURVEYRESPONDENT15)
 
 # surveyrespondent_36_pace
-data <- data %>% rename(surveyrespondent_36_pace = C_SKIPOUT)
+data$surveyrespondent_36_pace <- ifelse(data$C_SKIPOUT == 1, 0, 1)
 
 # surveyrespondent_72_pace -- already set to 1 in read-PACE.R file
 
@@ -400,6 +400,8 @@ pace_df <- data %>%
          career_knowledge_7_variables, training_commitment_index, academic_discipline_index, emotional_stability_index, social_support_index,
          life_challenges_index_4_variables, life_challenges_index_6_variables, stress_index, weight_15, weight_36, weight_72)
 
+
+table(pace_df$speak_only_english_at_home_0)
 
 # Fetch summary for Code Book
 stats <- sapply(pace_df, calculate_stats)

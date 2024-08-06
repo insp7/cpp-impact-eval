@@ -9,7 +9,7 @@ root <- find_root(is_rstudio_project)
 source("utils.R")
 
 # Generate Markdown Code for HPOG CodeBook
-lines <- readLines('YEAR_UP_36.txt') # Input summary statistics file path to generate markdown
+lines <- readLines('C:\\Users\\G47642829\\Desktop\\year_up_outcomes_36.txt') # Input summary statistics file path to generate markdown
 output <- ""
 var_name <- ""
 for (line in lines) {
@@ -28,6 +28,6 @@ for (line in lines) {
   }
 }
 
-sink("YEAR_UP_36_month_survey_respondents.txt")
+sink("year_up_outcomes_36.txt")
 cat(output)
 sink()

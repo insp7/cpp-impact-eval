@@ -187,7 +187,7 @@ data$number_of_children_dependent_0 <- ifelse(!data$DEPENDENT_CHILDREN %in% c(0,
 
 # any_children_0
 data$any_children_0 <- ifelse(is.na(data$number_of_children_dependent_0) | data$number_of_children_dependent_0 == 0, 1, 0)
-
+  
 # birth_country_usa_0
 data$birth_country_usa_0 <- ifelse(!data$CITIZENSHIP %in% c(0, 1, 2, 3, 4, 5), NA, 
                                       ifelse(data$CITIZENSHIP %in% c(1, 2), 1, 0))
