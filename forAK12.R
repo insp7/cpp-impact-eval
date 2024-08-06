@@ -1,5 +1,6 @@
 ### forAK12.R -- recode using "patterns" coding
-# Code Author: J.A. Klerman
+# Code Author: J.A. Klerman (https://github.com/jklerman)
+# Full Code Repo: https://github.com/jklerman/OPRE-XVAL
 
 xv_AF1 <- read.csv("AF1.csv")
 
