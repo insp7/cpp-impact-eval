@@ -159,6 +159,8 @@ data$marstat_never_married_0 <- coalesce(data$marstat_never_married_0.x, data$ma
 # print(sum(data$currently_working_0.x != data$currently_working_0.y, na.rm = T)) # 41
 data$currently_working_0 <- coalesce(data$currently_working_0.x, data$currently_working_0.y)
 
+table(data$currently_working_0.y)
+
 # worked_before_0.x                  
 # print(sum(data$worked_before_0.x != data$worked_before_0.y, na.rm = T)) # 514
 data$worked_before_0 <- coalesce(data$worked_before_0.x, data$worked_before_0.y)
@@ -171,7 +173,7 @@ data$never_worked_0 <- coalesce(data$never_worked_0.x, data$never_worked_0.y)
 data$tanf_assistance_0 <- coalesce(data$tanf_assistance_0.x, data$tanf_assistance_0.y)
 
 # wic_or_snap_assistance_0.x         
-data$wic_or_snap_assistance_0 <- coalesce(data$wic_or_snap_assistance_0.x, data$wic_or_snap_assistance_0.y)
+data$wic_or_snap_assistance_0 <- coalesce(data$wic_or_snap_assistance_0.x, data$tanf_assistance_0.y)
 
 # future_school_part_time.x          
 data$future_school_part_time <- coalesce(data$future_school_part_time.x, data$future_school_part_time.y)
@@ -200,6 +202,8 @@ data$study_year_up[is.na(data$study_year_up)] <- 0
 
 # any_children_0
 data$any_children_0 <- coalesce(data$any_children_0.x, data$any_children_0.y)
+
+# write_tsv(output, "educ_XX_HPOG_ONLY_variables[AFTER_CHANGE].tsv")
 
 # ----------------- Extract Required Columns ONLY ----------------- 
 df <- data %>% 
@@ -237,11 +241,9 @@ df$surveyrespondent_72_pace[is.na(df$surveyrespondent_72_pace)] <- 0
 # 2 Indicates Year Up
 # 3 Indicates PACE but not Year Up and not joint with HPOG1.0/PACE records
 df$study_type <- NA
-df$study_type[df$study_hpog == 1] <- 1 # HPOG
-df$study_type[df$study_year_up == 1] <- 2 # YEAR_UP
-df$study_type[df$study_hpog == 0 & df$study_pace == 1  & df$study_year_up == 0] <- 3 # PACE
-
-table(df$wic_or_snap_assistance_0)
+df$study_type[df$study_hpog == 1] <- 1
+df$study_type[df$study_year_up == 1] <- 2
+df$study_type[df$study_hpog == 0 & df$study_pace == 1 & df$study_year_up == 0] <- 3
 
 # Extract 3 studies
 all_hpog <- df %>% filter(study_type == 1)
@@ -291,6 +293,9 @@ pace_only_df <- pace_only %>%
          financial_support_not_difficult_at_all, financial_support_somewhat_difficult, financial_support_very_difficult, career_knowledge_3_variables,
          career_knowledge_7_variables, training_commitment_index, academic_discipline_index, emotional_stability_index, social_support_index,
          life_challenges_index_4_variables, life_challenges_index_6_variables, stress_index, weight_15, weight_36, weight_72)
+table(pace_only_df$speak_only_english_at_home_0)
+
+table(addNA(df$speak_only_english_at_home_0), addNA(df$reading_english_proficiency_not_at_all_0))
 
 year_up_df <- year_up %>% 
   select(participant_id, site_id, surveyrespondent_15_pace, surveyrespondent_36_pace, surveyrespondent_72_pace, study_pace, study_year_up, 
@@ -341,6 +346,11 @@ pace_survey_response_36 <- pace_only_df %>%
 
 pace_survey_response_72 <- pace_only_df %>% 
   filter(surveyrespondent_72_pace == 1)
+
+# Fetch summary for Code Book
+# sapply(df, calculate_stats)
+
+sapply(year_up_36, calculate_stats)
 
 # ----------------- Write extracted info. to CSV ----------------- 
 write.csv(df, file.path(root,"AF1.csv"), row.names = FALSE)

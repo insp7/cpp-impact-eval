@@ -21,9 +21,6 @@ data <- data %>% rename(participant_id = ABTSRBIID)
 # site_id
 data <- data %>% rename(site_id = USERSITE.x)
 
-# study_hpog
-data$study_hpog <- 1
-
 # surveyrespondent_15_hpog
 data <- data %>% rename(surveyrespondent_15_hpog = surveyrespondent_15)
 
@@ -32,6 +29,9 @@ data <- data %>% rename(surveyrespondent_36_hpog = surveyrespondent_36)
 
 # surveyrespondent_72_hpog
 data <- data %>% rename(surveyrespondent_72_hpog = surveyrespondent_72)
+
+# study_hpog
+data$study_hpog <- 1
 
 # credential_15
 data$credential_15 <- ifelse(!data$CREDENTIAL %in% c(0, 1), NA, data$CREDENTIAL)
@@ -133,7 +133,7 @@ data$age_GE35_0 <- ifelse(data$age_in_years_0 >= 35, 1, 0)
 # race_asian_0
 # race_american_indian_0
 # race_pacific_islander_0
-data$ethnicity_hispanic_0 <- ifelse(!data$ETHNICITY %in% c(1, 2), NA, ifelse(data$ETHNICITY == 1, 1, 0))
+data$ethnicity_hispanic_0 <- ifelse(!data$ETHNICITY %in% c(1, 2), NA, ifelse(data$ETHNICITY == 2, 0, 1))
 data$race_white_0 <- ifelse(!data$RACE_W %in% c(1, 2), NA, ifelse(data$RACE_W == 1, 1, 0))
 data$race_black_0 <- ifelse(!data$RACE_B %in% c(1, 2), NA, ifelse(data$RACE_B == 1, 1, 0))
 data$race_asian_0 <- ifelse(!data$RACE_A %in% c(1, 2), NA, ifelse(data$RACE_A == 1, 1, 0))
@@ -186,8 +186,7 @@ data$marstat_never_married_0 <- ifelse(!data$MARITAL %in% c(1, 2, 3, 4), NA, ife
 data$number_of_children_dependent_0 <- ifelse(!data$DEPENDENT_CHILDREN %in% c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), NA, data$DEPENDENT_CHILDREN)
 
 # any_children_0
-data$any_children_0 <- ifelse(is.na(data$number_of_children_dependent_0), NA, 
-                              ifelse(data$number_of_children_dependent_0 == 0, 0, 1))
+data$any_children_0 <- ifelse(is.na(data$number_of_children_dependent_0) | data$number_of_children_dependent_0 == 0, 1, 0)
   
 # birth_country_usa_0
 data$birth_country_usa_0 <- ifelse(!data$CITIZENSHIP %in% c(0, 1, 2, 3, 4, 5), NA, 
@@ -293,6 +292,10 @@ hpog_df <- data %>%
          number_of_employment_supports, number_of_colocated_services, emergency_assistance, peer_support, number_of_cp_principles, 
          proportion_local_some_college, proportion_local_jobs_health_care, median_wage_local_health_care, proportion_local_cash_assistance,
          proportion_local_enrolled_school, total_msa_population, percent_local_unemployed)
+
+# Fetch summary for Code Book
+# summary_stats <- sapply(hpog_df, calculate_stats)
+# print(summary_stats)
 
 # ----------------- Write extracted info. to CSV ----------------- 
 folder_path <- file.path(root, "read-HPOG1.0-output")

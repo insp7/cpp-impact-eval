@@ -4,31 +4,6 @@ library(openxlsx)
 library(rprojroot)
 library(stringr)
 
-# Function to calculate mean with custom precision
-custom_mean <- function(column, var_name, study_type) {
-  if(var_name == "weekly_earnings_36" |
-     var_name == "weekly_earnings_15" | 
-     var_name == "weekly_earnings_72" |
-     var_name == "credential_15" | 
-     var_name == "credential_36" | 
-     var_name == "credential_72") {
-    
-    if(study_type == 1) { 
-      # Return pre-imputation mean for HPOG
-      return(formatC(mean(all_hpog_imp_set[[var_name]], na.rm = T), format = "f", digits = 4))
-    } else if(study_type == 2) {
-      # Return pre-imputation mean for Year Up
-      return(formatC(mean(year_up_imp_set[[var_name]], na.rm = T), format = "f", digits = 4))
-    } else if(study_type == 3) {
-      # Return pre-imputation mean for PACE
-      return(formatC(mean(pace_only_imp_set[[var_name]], na.rm = T), format = "f", digits = 4))
-    }
-  } else {
-    # Default mean calculation
-    return(formatC(mean(column, na.rm = T), format = "f", digits = 4))
-  }
-}
-
 # Checks whether x is binary
 is_binary <- function(x) all(x %in% c(0, 1) | is.na(x))
 

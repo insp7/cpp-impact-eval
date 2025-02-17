@@ -65,8 +65,8 @@ data$hourly_wage_rate_36 <- data$employment_hourlywage_pace
 
 # weekly_earnings_36
 data$weekly_earnings_36 <- ifelse(!data$EMPLOYEDATFOLLOWUP %in% c(0, 1), NA,
-                                  ifelse(data$EMPLOYEDATFOLLOWUP == 0, 0,
-                                         data$hours_worked_per_week_36 * data$hourly_wage_rate_36))
+                                  ifelse(data$EMPLOYEDATFOLLOWUP == 0, 0, 
+                                         data$hours_worked_per_week_36 * data$houly_wage_rate_36))
 
 # hours_worked_per_week_alt_36
 data$hours_worked_per_week_alt_36 <- ifelse(!data$EMPLOYEDATFOLLOWUP %in% c(0, 1), NA,
@@ -173,8 +173,7 @@ data$marstat_never_married_0 <- ifelse(!data$B08_MARSTAT %in% c(1, 2, 3, 4, 5), 
 data$number_of_children_home_0 <- ifelse(!data$B15A_NUM_CHN %in% c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16), NA, data$B15A_NUM_CHN)
 
 # any_children
-data$any_children_0 <- ifelse(is.na(data$number_of_children_home_0), NA,
-                              ifelse(data$number_of_children_home_0 == 0, 0, 1))
+data$any_children_0 <- ifelse(is.na(data$number_of_children_home_0) | data$number_of_children_home_0 == 0, 0, 1)
 
 # birth_country_usa_0
 data$birth_country_usa_0 <- ifelse(!data$B11_BORN_USA %in% c(0, 1), NA, 
@@ -242,7 +241,6 @@ data$tanf_assistance_0 <- ifelse(!data$B26C_PA %in% c(0, 1), NA,
 # wic_or_snap_assistance_0
 data$wic_or_snap_assistance_0 <- ifelse(!data$B26B_WICSNAP %in% c(0, 1), NA, 
                                         ifelse(data$B26B_WICSNAP == 1, 1, 0))
-
 
 # future_school_part_time
 data$future_school_part_time <- ifelse(!data$S01_FUTURE_SCHOOL %in% c(1, 2), NA, 
@@ -402,8 +400,11 @@ pace_df <- data %>%
          career_knowledge_7_variables, training_commitment_index, academic_discipline_index, emotional_stability_index, social_support_index,
          life_challenges_index_4_variables, life_challenges_index_6_variables, stress_index, weight_15, weight_36, weight_72)
 
+
+table(pace_df$speak_only_english_at_home_0)
+
 # Fetch summary for Code Book
-# stats <- sapply(pace_df, calculate_stats)
+stats <- sapply(pace_df, calculate_stats)
 
 # ----------------- Write extracted info. to CSV ----------------- 
 folder_path <- file.path(root, "read-PACE-output")
